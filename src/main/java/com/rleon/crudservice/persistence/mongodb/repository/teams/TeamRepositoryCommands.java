@@ -1,16 +1,16 @@
-package com.rleon.crudservice.persistence.inmemory.repository.teams;
+package com.rleon.crudservice.persistence.mongodb.repository.teams;
 
 import com.rleon.crudservice.model.Team;
-import com.rleon.crudservice.persistence.inmemory.InMemoryContext;
+import com.rleon.crudservice.persistence.mongodb.MongoDbClient;
 import com.rleon.crudservice.persistence.repository.teams.ITeamRepositoryCommands;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class TeamRepositoryCommands implements ITeamRepositoryCommands<Team> {
 
-    private final InMemoryContext _context;
+    private final MongoDbClient _context;
 
-    public TeamRepositoryCommands(InMemoryContext context) {
+    public TeamRepositoryCommands(MongoDbClient context) {
         _context = context;
     }
 
@@ -21,6 +21,6 @@ public class TeamRepositoryCommands implements ITeamRepositoryCommands<Team> {
      */
     @Override
     public void addTeam(Team team) {
-        _context.getTeams().add(team);
+
     }
 }

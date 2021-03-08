@@ -1,16 +1,17 @@
-package com.rleon.crudservice.persistence.inmemory.repository.teams;
+package com.rleon.crudservice.persistence.mongodb.repository.teams;
 
 import com.rleon.crudservice.model.Team;
-import com.rleon.crudservice.persistence.inmemory.InMemoryContext;
+import com.rleon.crudservice.persistence.mongodb.MongoDbClient;
 import com.rleon.crudservice.persistence.repository.teams.ITeamRepositoryQueries;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class TeamRepositoryQueries implements ITeamRepositoryQueries<Team> {
 
-    private final InMemoryContext _context;
+    private final MongoDbClient _context;
 
-    public TeamRepositoryQueries(InMemoryContext context) {
+    public TeamRepositoryQueries(MongoDbClient context) {
+
         _context = context;
     }
 
@@ -21,7 +22,7 @@ public class TeamRepositoryQueries implements ITeamRepositoryQueries<Team> {
      */
     @Override
     public Iterable<Team> getTeams() {
-        return _context.getTeams();
+        return null;
     }
 
     /**
@@ -32,14 +33,6 @@ public class TeamRepositoryQueries implements ITeamRepositoryQueries<Team> {
      */
     @Override
     public Team getTeam(int id) {
-        var teams = _context.getTeams();
-        Team found = null;
-        for (Team team: teams) {
-            if (team.getId() == id) {
-                found = team;
-                break;
-            }
-        }
-        return found;
+        return null;
     }
 }

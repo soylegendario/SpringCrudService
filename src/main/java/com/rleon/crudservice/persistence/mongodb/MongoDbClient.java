@@ -12,8 +12,7 @@ import org.springframework.stereotype.Component;
 public class MongoDbClient {
     private final MongoClient _client;
 
-    public MongoDbClient(MongoDbSettings settings) {
-        _client = MongoClients.create(settings.build());
+    public MongoDbClient(MongoDbSettings settings) { _client = MongoClients.create(settings.build());
     }
 
     public MongoDatabase getDatabase() {

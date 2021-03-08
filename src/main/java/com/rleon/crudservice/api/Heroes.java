@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Heroes {
+
     private final HeroQueriesService _heroQueriesService;
     private final HeroCommandsService _heroCommandsService;
 
@@ -32,7 +33,7 @@ public class Heroes {
         try {
             var hero = _heroQueriesService.getById(id);
             return (hero == null)
-                    ? new ResponseEntity<>("Team not found", HttpStatus.NOT_FOUND)
+                    ? new ResponseEntity<>("Hero not found", HttpStatus.NOT_FOUND)
                     : new ResponseEntity<>(hero, HttpStatus.OK);
         }
         catch (Exception e) {

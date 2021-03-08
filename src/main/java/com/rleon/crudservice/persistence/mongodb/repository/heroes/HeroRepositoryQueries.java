@@ -1,16 +1,17 @@
-package com.rleon.crudservice.persistence.inmemory.repository.heroes;
+package com.rleon.crudservice.persistence.mongodb.repository.heroes;
 
+import com.google.common.collect.Lists;
 import com.rleon.crudservice.model.Hero;
-import com.rleon.crudservice.persistence.inmemory.InMemoryContext;
+import com.rleon.crudservice.persistence.mongodb.MongoDbClient;
 import com.rleon.crudservice.persistence.repository.heroes.IHeroRepositoryQueries;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class HeroRepositoryQueries implements IHeroRepositoryQueries<Hero> {
 
-    private final InMemoryContext _context;
+    private final MongoDbClient _context;
 
-    public HeroRepositoryQueries(InMemoryContext context) {
+    public HeroRepositoryQueries(MongoDbClient context) {
         _context = context;
     }
 
@@ -21,7 +22,8 @@ public class HeroRepositoryQueries implements IHeroRepositoryQueries<Hero> {
      */
     @Override
     public Iterable<Hero> getHeroes() {
-        return _context.getHeroes();
+        var cursor = _context.getHeroes().find();
+        return Lists.newArrayList(cursor);
     }
 
     /**
